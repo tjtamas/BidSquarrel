@@ -14,42 +14,41 @@ class _LoginScreenState extends State<LoginScreen> {
   final _passwordController = TextEditingController();
   bool _isLoading = false;
 
-void _login() async {
-  final email = _emailController.text.trim();
-  final password = _passwordController.text.trim();
+  void _login() async {
+    final email = _emailController.text.trim();
+    final password = _passwordController.text.trim();
 
-  setState(() => _isLoading = true);
+    setState(() => _isLoading = true);
 
-  try {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Sikeres bejelentkezés: $email')),
-    );
-  } on FirebaseAuthException catch (e) {
-    // 🔥 Itt a DEBUG print
-    print("🔥 FirebaseAuthException");
-    print("Code: ${e.code}");
-    print("Message: ${e.message}");
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Sikeres bejelentkezés: $email')));
+    } on FirebaseAuthException catch (e) {
+      // 🔥 Itt a DEBUG print
+      print("🔥 FirebaseAuthException");
+      print("Code: ${e.code}");
+      print("Message: ${e.message}");
 
-    String errorMsg = switch (e.code) {
-      'invalid-email' => 'Hibás e-mail cím.',
-      'user-not-found' => 'Nem található ilyen felhasználó.',
-      'wrong-password' => 'Hibás jelszó.',
-      _ => 'Bejelentkezési hiba: ${e.message}',
-    };
+      String errorMsg = switch (e.code) {
+        'invalid-email' => 'Hibás e-mail cím.',
+        'user-not-found' => 'Nem található ilyen felhasználó.',
+        'wrong-password' => 'Hibás jelszó.',
+        _ => 'Bejelentkezési hiba: ${e.message}',
+      };
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(errorMsg)),
-    );
-  } finally {
-    setState(() => _isLoading = false);
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(errorMsg)));
+    } finally {
+      setState(() => _isLoading = false);
+    }
   }
-}
-
 
   @override
   Widget build(BuildContext context) {
@@ -87,9 +86,9 @@ void _login() async {
                 _isLoading
                     ? const CircularProgressIndicator()
                     : ElevatedButton(
-                        onPressed: _login,
-                        child: const Text('Bejelentkezés'),
-                      ),
+                      onPressed: _login,
+                      child: const Text('Bejelentkezés'),
+                    ),
                 TextButton(
                   onPressed: () {
                     // Jelszó reset jön majd később

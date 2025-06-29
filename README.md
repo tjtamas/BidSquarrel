@@ -1,16 +1,28 @@
-# licitmokus_app
+# 🐿️ BidSquarrel (a.k.a. Licitmókus App)
 
-A new Flutter project.
+BidSquarrel is a playful and practical bidding and scheduling app — originally developed in Hungarian as "Licitmókus", now with ambitions to go international. The project is built with **Flutter** and uses **Firebase** for authentication and data storage.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
 
-A few resources to get you started if this is your first Flutter project:
+- 🔐 Firebase Email/Password Authentication
+- 🎨 Custom mascot login UI (SVG squirrel holding a calendar 🐿️📅)
+- 📁 Modular Flutter architecture (clean folder structure)
+- 🌐 Multi-platform ready (web-first, later mobile & desktop)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🧱 Tech Stack
+
+- **Frontend:** Flutter 3.x
+- **Backend:** Firebase (Auth + Firestore)
+- **State:** Currently basic setState, later Riverpod or Provider
+- **Design:** Custom ThemeData with mascot-based branding
+
+---
+
+👨‍💻 Author
+Developed by Tomi – junior-medior full-stack developer building real-world portfolio projects step by step.
+📍 Based in Hungary | 🧠 Passionate about clean code & continuous learning
+
